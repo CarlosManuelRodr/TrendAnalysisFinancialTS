@@ -1,0 +1,656 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21275,        648]
+NotebookOptionsPosition[     20610,        620]
+NotebookOutlinePosition[     20959,        635]
+CellTagsIndexPosition[     20916,        632]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Generaci\[OAcute]n de muestra", "Chapter",
+ CellChangeTimes->{{3.6863273310672026`*^9, 3.6863273404255357`*^9}}],
+
+Cell["Genera muestras para ser utilizadas por los dem\[AAcute]s archivos.", \
+"Text",
+ CellChangeTimes->{{3.6942090242210083`*^9, 3.6942090312932773`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Muestras principales", "Subsection",
+ CellChangeTimes->{{3.694102592724663*^9, 3.6941025930253253`*^9}, {
+  3.6942090043586626`*^9, 3.6942090068926*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"sAndP", " ", "=", " ", 
+   RowBox[{"FinancialData", "[", 
+    RowBox[{"\"\<^GSPC\>\"", ",", "\"\<OHLCV\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1960", ",", "1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t1", " ", "=", " ", 
+   RowBox[{"sAndP", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t2", " ", "=", " ", 
+   RowBox[{"sAndP", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t3", " ", "=", " ", 
+   RowBox[{"sAndP", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t4", " ", "=", " ", 
+   RowBox[{"sAndP", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<sAndP.csv\>\""}], 
+    ",", "t"}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nasdaq", " ", "=", " ", 
+   RowBox[{"FinancialData", "[", 
+    RowBox[{"\"\<^IXIC\>\"", ",", "\"\<OHLCV\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1971", ",", "2", ",", "5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t1", " ", "=", " ", 
+   RowBox[{"nasdaq", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t2", " ", "=", " ", 
+   RowBox[{"nasdaq", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t3", " ", "=", " ", 
+   RowBox[{"nasdaq", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t4", " ", "=", " ", 
+   RowBox[{"nasdaq", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<nasdaq.csv\>\""}], 
+    ",", "t"}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mxx", " ", "=", " ", 
+   RowBox[{"FinancialData", "[", 
+    RowBox[{"\"\<^MXX\>\"", ",", "\"\<OHLCV\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t1", " ", "=", " ", 
+   RowBox[{"mxx", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t2", " ", "=", " ", 
+   RowBox[{"mxx", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t3", " ", "=", " ", 
+   RowBox[{"mxx", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t4", " ", "=", " ", 
+   RowBox[{"mxx", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<ipc.csv\>\""}], ",", 
+   "t"}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.686241934449375*^9, {3.686241989002826*^9, 3.686242005869914*^9}, {
+   3.686242301809306*^9, 3.686242389516938*^9}, {3.6941024932157197`*^9, 
+   3.694102544772028*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Muestras secundarias", "Subsection",
+ CellChangeTimes->{{3.6941025971432824`*^9, 3.6941025974275513`*^9}, {
+  3.6942090090052433`*^9, 3.6942090111408815`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^FTSE\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<ftse.csv\>\""}], 
+     ",", "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^NYA\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<nya.csv\>\""}], ",",
+      "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^GDAXI\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<gdaxi.csv\>\""}], 
+     ",", "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^FCHI\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<fchi.csv\>\""}], 
+     ",", "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^HSI\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<hsi.csv\>\""}], ",",
+      "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^MERV\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<merv.csv\>\""}], 
+     ",", "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^KLSE\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<klse.csv\>\""}], 
+     ",", "t"}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"FinancialData", "[", 
+      RowBox[{"\"\<^TA100\>\"", ",", "\"\<OHLCV\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1991", ",", "11", ",", "8"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"2016", ",", "10", ",", "21"}], "}"}]}], "}"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "1"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t2", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t3", " ", "=", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1", ",", "3"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t4", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2", ",", "4"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t", " ", "=", " ", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{"t1", ",", "t2", ",", "t3", ",", "t4"}], "}"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<ta100.csv\>\""}], 
+     ",", "t"}], "]"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6941027721716814`*^9, 3.694102794596218*^9}, {
+  3.694102887084135*^9, 3.694102895801694*^9}, {3.694103023771699*^9, 
+  3.6941031071802044`*^9}, {3.694208980311221*^9, 3.694208994628228*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Funci\[OAcute]n para importar la muestra", "Chapter",
+ CellChangeTimes->{{3.686327350014327*^9, 3.6863273543005505`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ImportFinancialData", "[", "path_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "data", ",", " ", "years", ",", " ", "month", ",", " ", "day", ",", " ",
+        "price", ",", " ", "date"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"data", " ", "=", " ", 
+       RowBox[{"Import", "[", "path", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"years", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"month", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"day", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "3"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"price", " ", "=", " ", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "4"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"date", " ", "=", " ", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"years", ",", "month", ",", "day"}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"date", ",", "price"}], "}"}], "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.686326816269493*^9, 3.686326828212026*^9}, {
+   3.6863270161259203`*^9, 3.686327053227929*^9}, {3.6863271152066603`*^9, 
+   3.6863271551684027`*^9}, {3.6863272897665243`*^9, 3.6863273141835575`*^9}, 
+   3.68632734644855*^9}]
+}, Open  ]]
+},
+WindowSize->{1920, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 118, 1, 65, "Chapter"],
+Cell[701, 25, 155, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[881, 31, 159, 2, 43, "Subsection"],
+Cell[1043, 35, 4630, 144, 825, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5710, 184, 165, 2, 43, "Subsection"],
+Cell[5878, 188, 12720, 374, 2274, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18647, 568, 127, 1, 65, "Chapter"],
+Cell[18777, 571, 1817, 46, 327, "Input"]
+}, Open  ]]
+}
+]
+*)
+
