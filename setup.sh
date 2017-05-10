@@ -1,3 +1,3 @@
 #!/bin/sh
 make -C TnSymmetryStatistic/Mathematica/
-wolframscript -file gensample.wls
+wolframscript -file generar_muestra.wls
