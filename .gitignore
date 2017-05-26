@@ -51,6 +51,10 @@ Temporary Items
 *.pdf
 *.aux
 *.synctex.gz
+Test.nb
 Samples/
 Plots/
-HistoricData/
+Plots2/
+HistoricData1/
+HistoricData2/
+HistoricData3/

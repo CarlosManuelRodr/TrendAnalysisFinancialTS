@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     59357,       1480]
-NotebookOptionsPosition[     57493,       1427]
-NotebookOutlinePosition[     57997,       1447]
-CellTagsIndexPosition[     57954,       1444]
+NotebookDataLength[     49464,       1227]
+NotebookOptionsPosition[     47163,       1162]
+NotebookOutlinePosition[     47669,       1182]
+CellTagsIndexPosition[     47626,       1179]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -37,99 +37,8 @@ Cell["Declaraci\[OAcute]n de funciones", "Chapter",
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"TrendDuration", "[", 
-    RowBox[{"timeseries_", ",", "dates_"}], "]"}], " ", ":=", " ", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-      "f", ",", " ", "sign", ",", " ", "first", ",", " ", "returns", ",", 
-       "distance"}], "}"}], ",", "\[IndentingNewLine]", 
-     RowBox[{"(*", " ", 
-      RowBox[{"Primero", " ", "creo", " ", "una", " ", 
-       RowBox[{"funci\[OAcute]n", " ", "'"}], 
-       RowBox[{"f", "'"}], " ", "que", " ", "interpola", " ", "los", " ", 
-       "datos", " ", "con", " ", "orden", " ", "1", " ", "para", " ", 
-       "obtener", " ", "el", " ", "signo", " ", "de", " ", "su", " ", 
-       RowBox[{"derivada", ".", " ", "Esto"}], " ", "lo", " ", "utilizo", " ",
-        "para", " ", "saber", " ", "si", " ", "la", " ", "tendencia", " ", 
-       "es", " ", "ascendente", " ", "o", " ", 
-       RowBox[{"descendente", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"f", " ", "=", " ", 
-       RowBox[{"Interpolation", "[", 
-        RowBox[{"timeseries", ",", 
-         RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"sign", " ", "=", " ", 
-       RowBox[{"Sign", "[", 
-        RowBox[{
-         RowBox[{"f", "'"}], "[", "1", "]"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"first", " ", "=", " ", 
-       RowBox[{"timeseries", "[", 
-        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"returns", " ", "=", " ", 
-       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"distance", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
-      RowBox[{"(*", " ", 
-       RowBox[{
-        RowBox[{"Recorro", " ", "la", " ", "lista", " ", "de", " ", 
-         RowBox[{"datos", ".", " ", "Si"}], " ", "la", " ", "tendencia", " ", 
-         "cambia", " ", "guardo", " ", "la", " ", "resta", " ", "entre", " ", 
-         "el", " ", "inicio", " ", "de", " ", "tendencia", " ", "y", " ", 
-         "el", " ", "fin"}], ",", " ", 
-        RowBox[{
-        "y", " ", "cambio", " ", "el", " ", "signo", " ", "de", " ", "la", 
-         " ", "nueva", " ", 
-         RowBox[{"tendencia", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"Do", "[", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"distance", "++"}], ";", "\[IndentingNewLine]", 
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"sign", " ", "\[NotEqual]", " ", 
-             RowBox[{"Sign", "[", 
-              RowBox[{
-               RowBox[{"f", "'"}], "[", 
-               RowBox[{"i", "+", "1"}], "]"}], "]"}]}], " ", "||", " ", 
-            RowBox[{"i", " ", "\[Equal]", " ", 
-             RowBox[{
-              RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}]}], ",",
-            "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"AppendTo", "[", 
-             RowBox[{"returns", ",", " ", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"dates", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], ",", "distance"}], "}"}]}], 
-             "]"}], ";", "\[IndentingNewLine]", 
-            RowBox[{"first", " ", "=", " ", 
-             RowBox[{"timeseries", "[", 
-              RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-            RowBox[{"sign", "  ", "=", " ", 
-             RowBox[{"Sign", "[", 
-              RowBox[{
-               RowBox[{"f", "'"}], "[", 
-               RowBox[{"i", "+", "1"}], "]"}], "]"}]}], ";", 
-            "\[IndentingNewLine]", 
-            RowBox[{"distance", " ", "=", " ", "0"}], ";"}]}], 
-          "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
-        RowBox[{"{", 
-         RowBox[{"i", ",", "1", ",", 
-          RowBox[{
-           RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}], "}"}]}], 
-       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Return", "[", "returns", "]"}], ";"}]}], "\[IndentingNewLine]",
-     "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
    RowBox[{
-    RowBox[{"TrendDurationNoDates", "[", "timeseries_", "]"}], " ", ":=", " ", 
+    RowBox[{"TrendDuration", "[", "timeseries_", "]"}], " ", ":=", " ", 
     RowBox[{"Module", "[", 
      RowBox[{
       RowBox[{"{", 
@@ -216,49 +125,82 @@ Cell[BoxData[{
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"ADPiValues", "[", 
-    RowBox[{"data_", ",", "dates_", ",", " ", "window_"}], "]"}], ":=", " ", 
-   RowBox[{"Block", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"part", ",", " ", "cutdates", ",", "ad"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"TrendReturns", "[", "timeseries_", "]"}], " ", ":=", " ", 
+    RowBox[{"Module", "[", 
      RowBox[{
-      RowBox[{"part", " ", "=", " ", 
-       RowBox[{"Partition", "[", 
-        RowBox[{"data", ",", "window", ",", "1"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"cutdates", " ", "=", " ", 
-       RowBox[{"dates", "[", 
-        RowBox[{"[", 
-         RowBox[{"window", ";;", 
-          RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"ad", " ", "=", " ", 
-       RowBox[{"ParallelTable", "[", 
+      RowBox[{"{", 
+       RowBox[{
+       "prices", ",", " ", "dates", ",", " ", "f", ",", " ", "sign", ",", " ",
+         "first", ",", " ", "returns"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"prices", " ", "=", " ", "timeseries"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{"Interpolation", "[", 
+         RowBox[{"prices", ",", 
+          RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"sign", " ", "=", " ", 
+        RowBox[{"Sign", "[", 
+         RowBox[{
+          RowBox[{"f", "'"}], "[", "1", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"first", " ", "=", " ", 
+        RowBox[{"prices", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"returns", " ", "=", " ", 
         RowBox[{
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"cutdates", "[", 
-            RowBox[{"[", "i", "]"}], "]"}], ",", 
-           RowBox[{"Quiet", "[", 
-            RowBox[{"AndersonDarlingTest", "[", 
-             RowBox[{
+         RowBox[{"Reap", "[", "\[IndentingNewLine]", 
+          RowBox[{"Do", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"If", "[", 
               RowBox[{
-               RowBox[{"part", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], "-", "1"}], ",", 
-              RowBox[{"GeometricDistribution", "[", "0.5", "]"}]}], "]"}], 
-            "]"}]}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "[", "part", "]"}]}], "}"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Return", "[", "ad", "]"}], ";"}]}], "\[IndentingNewLine]", 
-    "]"}]}], ";"}], "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"sign", " ", "\[NotEqual]", " ", 
+                 RowBox[{"Sign", "[", 
+                  RowBox[{
+                   RowBox[{"f", "'"}], "[", 
+                   RowBox[{"i", "+", "1"}], "]"}], "]"}]}], " ", "||", " ", 
+                RowBox[{"i", " ", "\[Equal]", " ", 
+                 RowBox[{
+                  RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}]}], 
+               ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Sow", "[", " ", 
+                 RowBox[{
+                  RowBox[{"Log", "[", 
+                   RowBox[{"prices", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}], "-", 
+                  RowBox[{"Log", "[", "first", "]"}]}], "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"first", " ", "=", " ", 
+                 RowBox[{"prices", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"sign", "  ", "=", " ", 
+                 RowBox[{"Sign", "[", 
+                  RowBox[{
+                   RowBox[{"f", "'"}], "[", 
+                   RowBox[{"i", "+", "1"}], "]"}], "]"}]}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{
+               RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}], 
+             "}"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+          "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "returns", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
-    RowBox[{"ADPiValuesNoDates", "[", 
-     RowBox[{"data_", ",", " ", "window_"}], "]"}], ":=", " ", 
+    RowBox[{"ADPiValues", "[", 
+     RowBox[{"data_", ",", " ", "window_", ",", "p_"}], "]"}], ":=", " ", 
     RowBox[{"Block", "[", 
      RowBox[{
       RowBox[{"{", 
@@ -278,8 +220,43 @@ Cell[BoxData[{
              RowBox[{
               RowBox[{"part", "[", 
                RowBox[{"[", "i", "]"}], "]"}], "-", "1"}], ",", 
-             RowBox[{"GeometricDistribution", "[", "0.5", "]"}]}], "]"}], 
-           "]"}], ",", 
+             RowBox[{"GeometricDistribution", "[", "p", "]"}]}], "]"}], "]"}],
+           ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "part", "]"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "ad", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ADPiValuesRandom", "[", 
+     RowBox[{"data_", ",", " ", "window_", ",", "p_"}], "]"}], ":=", " ", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"part", ",", " ", "cutdates", ",", "ad"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"part", " ", "=", " ", 
+        RowBox[{"Partition", "[", 
+         RowBox[{"data", ",", "window", ",", "1"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"ad", " ", "=", " ", 
+        RowBox[{"ParallelTable", "[", 
+         RowBox[{
+          RowBox[{"Quiet", "[", 
+           RowBox[{"AndersonDarlingTest", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"RandomSample", "[", 
+               RowBox[{
+                RowBox[{"part", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ",", "500"}], "]"}], "-", 
+              "1"}], ",", 
+             RowBox[{"GeometricDistribution", "[", "p", "]"}]}], "]"}], "]"}],
+           ",", 
           RowBox[{"{", 
            RowBox[{"i", ",", "1", ",", 
             RowBox[{"Length", "[", "part", "]"}]}], "}"}]}], "]"}]}], ";", 
@@ -341,11 +318,21 @@ Cell[BoxData[{
     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<Samples/\>\""}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"historicDataDir1", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<HistoricData1/\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"historicDataDir2", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+    "\"\<HistoricData2/\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
-   RowBox[{"historicDataDir", " ", "=", " ", 
+   RowBox[{"historicDataDir3", " ", "=", " ", 
     RowBox[{
      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-     "\"\<HistoricData/\>\""}]}], ";"}], 
+     "\"\<HistoricData3/\>\""}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -359,7 +346,7 @@ Cell[BoxData[{
     "\[IndentingNewLine]", "]"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"SetDirectory", "[", "historicDataDir", "]"}], 
+  RowBox[{"SetDirectory", "[", "historicDataDir1", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"historicfiles", " ", "=", " ", 
@@ -370,12 +357,19 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"files", " ", "=", " ", 
    RowBox[{"FileNames", "[", "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
  CellChangeTimes->{{3.6967310587339573`*^9, 3.696731059048162*^9}, {
    3.6968167348832846`*^9, 3.696816747747058*^9}, {3.6968171278439016`*^9, 
    3.696817154918358*^9}, 3.7033608316871767`*^9, {3.7033702361576977`*^9, 
    3.703370258805093*^9}, {3.703370561648903*^9, 3.7033706562650137`*^9}, {
-   3.703372932888672*^9, 
-   3.7033729858572474`*^9}},ExpressionUUID->"2e63861a-6f76-4058-96ba-\
+   3.703372932888672*^9, 3.7033729858572474`*^9}, {3.704140482137485*^9, 
+   3.704140483914407*^9}, {3.704140614688571*^9, 3.704140618191663*^9}, {
+   3.7041408223718557`*^9, 3.70414082574333*^9}, {3.704140860665703*^9, 
+   3.704140868019903*^9}, {3.704748548120556*^9, 3.704748554663484*^9}, {
+   3.704753455084165*^9, 3.70475345546176*^9}, {3.704754128978125*^9, 
+   3.704754142118166*^9}, {3.704754478996586*^9, 3.70475452709006*^9}, {
+   3.704754595169117*^9, 
+   3.704754608848324*^9}},ExpressionUUID->"2e63861a-6f76-4058-96ba-\
 86fa1a530e1b"]
 }, Open  ]],
 
@@ -391,48 +385,181 @@ Cell["Equivalentes a la Fig. 4.", "Text",
   3.6860006675454144`*^9}},ExpressionUUID->"5a2842c5-749d-4737-9d84-\
 e09c52276ae0"],
 
+Cell[CellGroupData[{
+
+Cell["Sin muestreo aleatorio", "Subchapter",
+ CellChangeTimes->{{3.704755195911965*^9, 
+  3.7047551986962423`*^9}},ExpressionUUID->"0a71ad44-48d0-4333-b957-\
+5b80b4ddc30d"],
+
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"SetDirectory", "[", "historicDataDir", "]"}], 
+  RowBox[{"SetDirectory", "[", "historicDataDir1", "]"}], 
   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"files", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<DJIA.csv\>\"", ",", " ", "\"\<IPC.csv\>\"", ",", " ", 
+      "\"\<NASDAQ Composite.csv\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"Do", "[", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{"filedata", " ", "=", " ", 
-     RowBox[{"StringSplit", "[", 
-      RowBox[{
-       RowBox[{"FileBaseName", "[", "f", "]"}], ",", "\"\<_\>\""}], "]"}]}], 
-    ";", "\[IndentingNewLine]", 
-    RowBox[{"marketname", " ", "=", " ", 
-     RowBox[{"filedata", "[", 
-      RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"startdate", " ", "=", " ", 
-     RowBox[{"ToExpression", "[", 
-      RowBox[{"filedata", "[", 
-       RowBox[{"[", 
-        RowBox[{"{", 
-         RowBox[{"4", ",", "3", ",", "2"}], "}"}], "]"}], "]"}], "]"}]}], ";",
-     "\[IndentingNewLine]", 
-    RowBox[{"enddate", " ", "=", " ", 
-     RowBox[{"ToExpression", "[", 
-      RowBox[{"filedata", "[", 
-       RowBox[{"[", 
-        RowBox[{"{", 
-         RowBox[{"7", ",", "6", ",", "5"}], "}"}], "]"}], "]"}], "]"}]}], ";",
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"marketname", " ", "=", 
+     RowBox[{"FileBaseName", "[", "f", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"data", " ", "=", " ", 
-     RowBox[{"Flatten", "[", 
-      RowBox[{
-       RowBox[{"Import", "[", 
-        RowBox[{"historicDataDir", "<>", "f"}], "]"}], ",", "1"}], "]"}]}], 
-    ";", "\[IndentingNewLine]", 
-    RowBox[{"prices", " ", "=", " ", "data"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"trendDuration", " ", "=", " ", 
-     RowBox[{"TrendDurationNoDates", "[", "prices", "]"}]}], ";", 
+     RowBox[{"Import", "[", 
+      RowBox[{"historicDataDir1", "<>", "f"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
+    RowBox[{"dates", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"prices", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"startdate", " ", "=", 
+     RowBox[{"dates", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"enddate", " ", "=", 
+     RowBox[{"dates", "[", 
+      RowBox[{"[", 
+       RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"trendDuration", " ", "=", " ", 
+     RowBox[{"TrendDuration", "[", "prices", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"tr", " ", "=", 
+     RowBox[{"TrendReturns", "[", "prices", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p", " ", "=", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Map", "[", 
+          RowBox[{"Sign", ",", "tr"}], "]"}], ",", "1"}], "]"}], "/", 
+       RowBox[{"Length", "[", "tr", "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"ad", " ", "=", " ", 
-     RowBox[{"ADPiValuesNoDates", "[", 
-      RowBox[{"trendDuration", ",", "500"}], "]"}]}], ";", 
+     RowBox[{"ADPiValues", "[", 
+      RowBox[{"trendDuration", ",", "500", ",", "p"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"plot", " ", "=", " ", 
+     RowBox[{"DateListLogPlot", "[", 
+      RowBox[{"ad", ",", 
+       RowBox[{"{", 
+        RowBox[{"startdate", ",", "enddate"}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", "Full"}], ",", 
+       RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
+       RowBox[{"FrameLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Year\>\"", ",", " ", "\"\<\[Pi]-Value\>\""}], "}"}]}], 
+       ",", 
+       RowBox[{"BaseStyle", "\[Rule]", 
+        RowBox[{"FontSize", "\[Rule]", "13"}]}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", 
+        RowBox[{"marketname", "<>", "\"\< \>\"", " ", "<>", 
+         RowBox[{"DateString", "[", 
+          RowBox[{"startdate", ",", "\"\<ISODate\>\""}], "]"}], "<>", 
+         "\"\< - \>\"", "<>", 
+         RowBox[{"DateString", "[", 
+          RowBox[{"enddate", ",", "\"\<ISODate\>\""}], "]"}]}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+       RowBox[{"Joined", "\[Rule]", "False"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+      "plotsdir", "<>", "\"\<pvalores_\>\"", "<>", "marketname", "<>", 
+       "\"\<.eps\>\""}], ",", "plot"}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "plot", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"f", ",", "files"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.703370666077901*^9, 3.703370701296606*^9}, {
+   3.703370836592833*^9, 3.7033709706733007`*^9}, {3.703371055107037*^9, 
+   3.703371055329286*^9}, {3.7033713122744226`*^9, 3.7033713157590513`*^9}, 
+   3.7033729394753637`*^9, {3.7033729966958227`*^9, 3.7033729973370333`*^9}, 
+   3.7041402188710947`*^9, {3.70414087827748*^9, 3.704140923342032*^9}, {
+   3.7041409613825006`*^9, 3.704140964397081*^9}, 3.7047541457166433`*^9, {
+   3.704754191534069*^9, 3.704754279359682*^9}, 3.704754319643622*^9, 
+   3.7047543671244*^9, {3.704754411553755*^9, 3.704754440945774*^9}, {
+   3.704754543808866*^9, 3.7047545674430113`*^9}, {3.7047546171680307`*^9, 
+   3.704754617376411*^9}, 3.7047552474929953`*^9, {3.704764151356986*^9, 
+   3.704764153811108*^9}, {3.7047642584756927`*^9, 
+   3.704764259786496*^9}},ExpressionUUID->"f064f29f-e205-49e3-b8fc-\
+b20e77040a3d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Con muestreo aleatorio", "Subchapter",
+ CellChangeTimes->{{3.7047552062241173`*^9, 
+  3.7047552084563723`*^9}},ExpressionUUID->"2bfa0524-c4ee-41e9-a44a-\
+5b3ade595ca9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "historicDataDir1", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"files", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<DJIA.csv\>\"", ",", " ", "\"\<IPC.csv\>\"", ",", " ", 
+      "\"\<NASDAQ Composite.csv\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"marketname", " ", "=", 
+     RowBox[{"FileBaseName", "[", "f", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{"historicDataDir1", "<>", "f"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"dates", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"prices", " ", "=", " ", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"startdate", " ", "=", 
+     RowBox[{"dates", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"enddate", " ", "=", 
+     RowBox[{"dates", "[", 
+      RowBox[{"[", 
+       RowBox[{"-", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"trendDuration", " ", "=", " ", 
+     RowBox[{"TrendDuration", "[", "prices", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"tr", " ", "=", 
+     RowBox[{"TrendReturns", "[", "prices", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p", " ", "=", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Map", "[", 
+          RowBox[{"Sign", ",", "tr"}], "]"}], ",", "1"}], "]"}], "/", 
+       RowBox[{"Length", "[", "tr", "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"ad", " ", "=", " ", 
+     RowBox[{"ADPiValuesRandom", "[", 
+      RowBox[{"trendDuration", ",", "1000", ",", "p"}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"plot", " ", "=", " ", 
      RowBox[{"DateListLogPlot", "[", 
@@ -454,7 +581,8 @@ Cell[BoxData[{
          "\"\< - \>\"", "<>", 
          RowBox[{"DateString", "[", 
           RowBox[{"enddate", ",", "\"\<ISODate\>\""}], "]"}]}]}], ",", 
-       RowBox[{"ImageSize", "\[Rule]", "500"}]}], "]"}]}], ";", 
+       RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+       RowBox[{"Joined", "\[Rule]", "False"}]}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"Export", "[", 
      RowBox[{
@@ -464,14 +592,12 @@ Cell[BoxData[{
     RowBox[{"Print", "[", "plot", "]"}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", ",", 
    RowBox[{"{", 
-    RowBox[{"f", ",", "historicfiles"}], "}"}]}], "\[IndentingNewLine]", 
+    RowBox[{"f", ",", "files"}], "}"}]}], "\[IndentingNewLine]", 
   "]"}]}], "Input",
- CellChangeTimes->{{3.703370666077901*^9, 3.703370701296606*^9}, {
-   3.703370836592833*^9, 3.7033709706733007`*^9}, {3.703371055107037*^9, 
-   3.703371055329286*^9}, {3.7033713122744226`*^9, 3.7033713157590513`*^9}, 
-   3.7033729394753637`*^9, {3.7033729966958227`*^9, 
-   3.7033729973370333`*^9}},ExpressionUUID->"f064f29f-e205-49e3-b8fc-\
-b20e77040a3d"]
+ CellChangeTimes->{{3.704755216203676*^9, 
+  3.704755254867011*^9}},ExpressionUUID->"e9bd7e44-f069-4135-97a6-\
+c44bb49f4e9c"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -485,8 +611,7 @@ Cell["Equivalentes a la Fig. 3.", "Text",
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"UpwardTrendDuration", "[", 
-    RowBox[{"timeseries_", ",", "dates_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"UpwardTrendDuration", "[", "timeseries_", "]"}], " ", ":=", " ", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -555,13 +680,8 @@ Cell[BoxData[{
               "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"AppendTo", "[", 
-                RowBox[{"returns", ",", " ", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"dates", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], ",", "distance"}], 
-                  "}"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
-            "\[IndentingNewLine]", 
+                RowBox[{"returns", ",", " ", "distance"}], "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
             RowBox[{"first", " ", "=", " ", 
              RowBox[{"timeseries", "[", 
               RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
@@ -582,8 +702,7 @@ Cell[BoxData[{
      "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"DownwardTrendDuration", "[", 
-    RowBox[{"timeseries_", ",", "dates_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"DownwardTrendDuration", "[", "timeseries_", "]"}], " ", ":=", " ", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -652,13 +771,8 @@ Cell[BoxData[{
                RowBox[{"-", "1"}]}], ",", "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"AppendTo", "[", 
-                RowBox[{"returns", ",", " ", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"dates", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], ",", "distance"}], 
-                  "}"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
-            "\[IndentingNewLine]", 
+                RowBox[{"returns", ",", " ", "distance"}], "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
             RowBox[{"first", " ", "=", " ", 
              RowBox[{"timeseries", "[", 
               RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
@@ -677,21 +791,22 @@ Cell[BoxData[{
        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"Return", "[", "returns", "]"}], ";"}]}], "\[IndentingNewLine]",
      "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
  CellChangeTimes->{{3.6859917961891117`*^9, 3.6859918124634447`*^9}, {
-  3.68599202728298*^9, 
-  3.6859920351438923`*^9}},ExpressionUUID->"c08f9606-8d87-4f36-9123-\
+   3.68599202728298*^9, 3.6859920351438923`*^9}, 
+   3.704752034326112*^9},ExpressionUUID->"c08f9606-8d87-4f36-9123-\
 a877633c7efd"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"SetDirectory", "[", "samplesdir", "]"}], 
+  RowBox[{"SetDirectory", "[", "historicDataDir2", "]"}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"files", " ", "=", " ", 
     RowBox[{"{", 
      RowBox[{
-     "\"\<S&P 500.csv\>\"", ",", " ", "\"\<IPC.csv\>\"", ",", " ", 
+     "\"\<DJIA.csv\>\"", ",", " ", "\"\<IPC.csv\>\"", ",", " ", 
       "\"\<NASDAQ Composite.csv\>\""}], "}"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"Do", "[", "\[IndentingNewLine]", 
@@ -700,9 +815,9 @@ Cell[BoxData[{
     RowBox[{"marketname", " ", "=", " ", 
      RowBox[{"FileBaseName", "[", "f", "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"data", " ", "=", 
-     RowBox[{"ImportFinancialData", "[", 
-      RowBox[{"samplesdir", "<>", "f"}], "]"}]}], ";", "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", 
+     RowBox[{"Import", "[", 
+      RowBox[{"historicDataDir2", "<>", "f"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"dates", " ", "=", " ", 
      RowBox[{"data", "[", 
       RowBox[{"[", 
@@ -715,49 +830,33 @@ Cell[BoxData[{
     RowBox[{"(*", 
      RowBox[{"**", " ", "Upward"}], " ", "***)"}], "\[IndentingNewLine]", 
     RowBox[{"trendDuration", " ", "=", " ", 
-     RowBox[{"UpwardTrendDuration", "[", 
-      RowBox[{"prices", ",", " ", "dates"}], "]"}]}], ";", 
+     RowBox[{"UpwardTrendDuration", "[", "prices", "]"}]}], ";", 
     "\[IndentingNewLine]", 
-    RowBox[{"tddates", " ", "=", " ", 
-     RowBox[{"trendDuration", "[", 
-      RowBox[{"[", 
-       RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"tddata", " ", "=", " ", 
-     RowBox[{
-      RowBox[{"trendDuration", "[", 
-       RowBox[{"[", 
-        RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", "1"}]}], ";", 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Old", " ", "dates"}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"window", " ", "=", " ", "1000"}], ";", "\[IndentingNewLine]", 
-    RowBox[{"l", " ", "=", " ", 
-     RowBox[{"HistogramList", "[", 
+     RowBox[{"trendDuration", "-", "1"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"histogramList", " ", "=", " ", 
+     RowBox[{"Map", "[", 
       RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{"1", ";;", "window"}], "]"}], "]"}], ",", "Automatic", ",", 
-       "\"\<Probability\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"pts", " ", "=", " ", 
-     RowBox[{"Transpose", "[", 
-      RowBox[{"{", 
        RowBox[{
-        RowBox[{
-         RowBox[{"l", "[", 
-          RowBox[{"[", "1", "]"}], "]"}], "[", 
-         RowBox[{"[", 
-          RowBox[{"2", ";;", 
-           RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
-        RowBox[{"l", "[", 
-         RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";", 
+        RowBox[{"{", 
+         RowBox[{"#", ",", 
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{"tddata", ",", "#"}], "]"}], "/", 
+           RowBox[{"Length", "[", "tddata", "]"}]}]}], "}"}], "&"}], ",", 
+       RowBox[{"DeleteDuplicates", "[", "tddata", "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"tr", " ", "=", 
+     RowBox[{"TrendReturns", "[", "prices", "]"}]}], ";", 
     "\[IndentingNewLine]", 
-    RowBox[{"fit", " ", "=", " ", 
-     RowBox[{"FindDistributionParameters", "[", 
+    RowBox[{"p", " ", "=", " ", 
+     RowBox[{"N", "[", 
       RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{"1", ";;", "window"}], "]"}], "]"}], ",", 
-       RowBox[{"GeometricDistribution", "[", "p", "]"}]}], "]"}]}], ";", 
+       RowBox[{"Count", "[", 
+        RowBox[{
+         RowBox[{"Map", "[", 
+          RowBox[{"Sign", ",", "tr"}], "]"}], ",", "1"}], "]"}], "/", 
+       RowBox[{"Length", "[", "tr", "]"}]}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"fittedPts", " ", "=", " ", 
      RowBox[{"Table", "[", 
@@ -766,21 +865,17 @@ Cell[BoxData[{
         RowBox[{"k", ",", 
          RowBox[{"PDF", "[", 
           RowBox[{
-           RowBox[{"GeometricDistribution", "[", 
-            RowBox[{"p", " ", "/.", " ", "fit"}], "]"}], ",", "k"}], "]"}]}], 
-        "}"}], ",", 
+           RowBox[{"GeometricDistribution", "[", "p", "]"}], ",", "k"}], 
+          "]"}]}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{"k", ",", "0", ",", 
-         RowBox[{"Max", "[", 
-          RowBox[{"pts", "[", 
-           RowBox[{"[", 
-            RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], 
-      "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"Max", "[", "tddata", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"plot", " ", "=", " ", 
      RowBox[{"ListLogPlot", "[", 
       RowBox[{
        RowBox[{"{", 
-        RowBox[{"pts", ",", "fittedPts"}], "}"}], ",", 
+        RowBox[{"histogramList", ",", "fittedPts"}], "}"}], ",", 
        RowBox[{"Joined", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"False", ",", "True"}], "}"}]}], ",", 
@@ -793,26 +888,18 @@ Cell[BoxData[{
         RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
        RowBox[{"PlotLabel", "\[Rule]", 
         RowBox[{"marketname", "<>", "\"\< \>\"", " ", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<ISODate\>\""}], "]"}], 
-         "<>", "\"\< - \>\"", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", "window", "]"}], "]"}], ",", "\"\<ISODate\>\""}], 
-          "]"}]}]}], ",", 
+         RowBox[{"dates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "<>", "\"\< - \>\"", "<>", 
+         RowBox[{"dates", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}]}]}], ",", 
        RowBox[{"PlotStyle", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{
-          RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red"}], "}"}]}], 
-       ",", 
-       RowBox[{"PlotLegends", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-         "\"\<Upward trend distribution\>\"", ",", " ", 
-          "\"\<Geometric fit\>\""}], "}"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"PointSize", "[", "Large", "]"}], ",", "Black"}], "}"}], 
+          ",", "Red"}], "}"}]}], ",", 
        RowBox[{"Epilog", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"Inset", "[", 
@@ -823,9 +910,8 @@ Cell[BoxData[{
               RowBox[{"Style", "[", 
                RowBox[{
                 RowBox[{"\"\<\!\(\*OverscriptBox[\(p\), \(^\)]\) = \>\"", "<>", 
-                 RowBox[{"ToString", "[", 
-                  RowBox[{"p", " ", "/.", " ", "fit"}], "]"}]}], ",", "14"}], 
-               "]"}], "]"}], ",", 
+                 RowBox[{"ToString", "[", "p", "]"}]}], ",", "14"}], "]"}], 
+              "]"}], ",", 
              RowBox[{"RoundingRadius", "\[Rule]", "1"}], ",", 
              RowBox[{"Background", "\[Rule]", 
               RowBox[{"RGBColor", "[", 
@@ -844,172 +930,24 @@ Cell[BoxData[{
     "\[IndentingNewLine]", 
     RowBox[{"Print", "[", "plot", "]"}], ";", "\[IndentingNewLine]", 
     "\[IndentingNewLine]", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Recent", " ", "dates"}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"l", " ", "=", " ", 
-     RowBox[{"HistogramList", "[", 
-      RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{
-          RowBox[{"-", "window"}], ";;", 
-          RowBox[{"-", "1"}]}], "]"}], "]"}], ",", "Automatic", ",", 
-       "\"\<Probability\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"pts", " ", "=", " ", 
-     RowBox[{"Transpose", "[", 
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"l", "[", 
-          RowBox[{"[", "1", "]"}], "]"}], "[", 
-         RowBox[{"[", 
-          RowBox[{"2", ";;", 
-           RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
-        RowBox[{"l", "[", 
-         RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"fit", " ", "=", " ", 
-     RowBox[{"FindDistributionParameters", "[", 
-      RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{
-          RowBox[{"-", "window"}], ";;", 
-          RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
-       RowBox[{"GeometricDistribution", "[", "p", "]"}]}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"fittedPts", " ", "=", " ", 
-     RowBox[{"Table", "[", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"k", ",", 
-         RowBox[{"PDF", "[", 
-          RowBox[{
-           RowBox[{"GeometricDistribution", "[", 
-            RowBox[{"p", " ", "/.", " ", "fit"}], "]"}], ",", "k"}], "]"}]}], 
-        "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{"k", ",", "0", ",", 
-         RowBox[{"Max", "[", 
-          RowBox[{"pts", "[", 
-           RowBox[{"[", 
-            RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], 
-      "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-    RowBox[{"plot", " ", "=", " ", 
-     RowBox[{"ListLogPlot", "[", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"pts", ",", "fittedPts"}], "}"}], ",", 
-       RowBox[{"Joined", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"False", ",", "True"}], "}"}]}], ",", 
-       RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
-       RowBox[{"FrameLabel", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"\"\<Duration (Days)\>\"", ",", " ", "\"\<Probability\>\""}],
-          "}"}]}], ",", 
-       RowBox[{"BaseStyle", "\[Rule]", 
-        RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
-       RowBox[{"PlotLabel", "\[Rule]", 
-        RowBox[{"marketname", "<>", "\"\< \>\"", " ", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", 
-             RowBox[{"-", "window"}], "]"}], "]"}], ",", "\"\<ISODate\>\""}], 
-          "]"}], "<>", "\"\< - \>\"", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", 
-             RowBox[{"-", "1"}], "]"}], "]"}], ",", "\"\<ISODate\>\""}], 
-          "]"}]}]}], ",", 
-       RowBox[{"PlotStyle", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red"}], "}"}]}], 
-       ",", 
-       RowBox[{"PlotLegends", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-         "\"\<Upward trend distribution\>\"", ",", " ", 
-          "\"\<Geometric fit\>\""}], "}"}]}], ",", 
-       RowBox[{"Epilog", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"Inset", "[", 
-          RowBox[{
-           RowBox[{"Framed", "[", 
-            RowBox[{
-             RowBox[{"Text", "[", 
-              RowBox[{"Style", "[", 
-               RowBox[{
-                RowBox[{"\"\<\!\(\*OverscriptBox[\(p\), \(^\)]\) = \>\"", "<>", 
-                 RowBox[{"ToString", "[", 
-                  RowBox[{"p", " ", "/.", " ", "fit"}], "]"}]}], ",", "14"}], 
-               "]"}], "]"}], ",", 
-             RowBox[{"RoundingRadius", "\[Rule]", "1"}], ",", 
-             RowBox[{"Background", "\[Rule]", 
-              RowBox[{"RGBColor", "[", 
-               RowBox[{"1", ",", "1", ",", "1", ",", ".8"}], "]"}]}]}], "]"}],
-            ",", 
-           RowBox[{"Scaled", "[", 
-            RowBox[{"{", 
-             RowBox[{"0.8", ",", ".8"}], "}"}], "]"}]}], "]"}], "}"}]}], ",", 
-       RowBox[{"ImageSize", "\[Rule]", "500"}]}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"Export", "[", 
-     RowBox[{
-      RowBox[{
-      "plotsdir", "<>", "\"\<dist_pos_recentdates_\>\"", "<>", "marketname", 
-       "<>", "\"\<.png\>\""}], ",", "plot"}], "]"}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"Print", "[", "plot", "]"}], ";", "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", 
     RowBox[{"(*", 
      RowBox[{"**", " ", "Downward"}], " ", "***)"}], "\[IndentingNewLine]", 
-    RowBox[{"trendDuration", " ", "=", 
-     RowBox[{"DownwardTrendDuration", "[", 
-      RowBox[{"prices", ",", " ", "dates"}], "]"}]}], ";", 
+    RowBox[{"trendDuration", " ", "=", " ", 
+     RowBox[{"DownwardTrendDuration", "[", "prices", "]"}]}], ";", 
     "\[IndentingNewLine]", 
-    RowBox[{"tddates", " ", "=", " ", 
-     RowBox[{"trendDuration", "[", 
-      RowBox[{"[", 
-       RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
     RowBox[{"tddata", " ", "=", " ", 
-     RowBox[{
-      RowBox[{"trendDuration", "[", 
-       RowBox[{"[", 
-        RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", "1"}]}], ";", 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Old", " ", "dates"}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"l", " ", "=", " ", 
-     RowBox[{"HistogramList", "[", 
+     RowBox[{"trendDuration", "-", "1"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"histogramList", " ", "=", " ", 
+     RowBox[{"Map", "[", 
       RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{"1", ";;", "window"}], "]"}], "]"}], ",", "Automatic", ",", 
-       "\"\<Probability\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"pts", " ", "=", " ", 
-     RowBox[{"Transpose", "[", 
-      RowBox[{"{", 
        RowBox[{
-        RowBox[{
-         RowBox[{"l", "[", 
-          RowBox[{"[", "1", "]"}], "]"}], "[", 
-         RowBox[{"[", 
-          RowBox[{"2", ";;", 
-           RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
-        RowBox[{"l", "[", 
-         RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"fit", " ", "=", " ", 
-     RowBox[{"FindDistributionParameters", "[", 
-      RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{"1", ";;", "window"}], "]"}], "]"}], ",", 
-       RowBox[{"GeometricDistribution", "[", "p", "]"}]}], "]"}]}], ";", 
+        RowBox[{"{", 
+         RowBox[{"#", ",", 
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{"tddata", ",", "#"}], "]"}], "/", 
+           RowBox[{"Length", "[", "tddata", "]"}]}]}], "}"}], "&"}], ",", 
+       RowBox[{"DeleteDuplicates", "[", "tddata", "]"}]}], "]"}]}], ";", 
     "\[IndentingNewLine]", 
     RowBox[{"fittedPts", " ", "=", " ", 
      RowBox[{"Table", "[", 
@@ -1019,20 +957,16 @@ Cell[BoxData[{
          RowBox[{"PDF", "[", 
           RowBox[{
            RowBox[{"GeometricDistribution", "[", 
-            RowBox[{"p", " ", "/.", " ", "fit"}], "]"}], ",", "k"}], "]"}]}], 
-        "}"}], ",", 
+            RowBox[{"1", "-", "p"}], "]"}], ",", "k"}], "]"}]}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{"k", ",", "0", ",", 
-         RowBox[{"Max", "[", 
-          RowBox[{"pts", "[", 
-           RowBox[{"[", 
-            RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], 
-      "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"Max", "[", "tddata", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
     RowBox[{"plot", " ", "=", " ", 
      RowBox[{"ListLogPlot", "[", 
       RowBox[{
        RowBox[{"{", 
-        RowBox[{"pts", ",", "fittedPts"}], "}"}], ",", 
+        RowBox[{"histogramList", ",", "fittedPts"}], "}"}], ",", 
        RowBox[{"Joined", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"False", ",", "True"}], "}"}]}], ",", 
@@ -1045,26 +979,18 @@ Cell[BoxData[{
         RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
        RowBox[{"PlotLabel", "\[Rule]", 
         RowBox[{"marketname", "<>", "\"\< \>\"", " ", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<ISODate\>\""}], "]"}], 
-         "<>", "\"\< - \>\"", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", "window", "]"}], "]"}], ",", "\"\<ISODate\>\""}], 
-          "]"}]}]}], ",", 
+         RowBox[{"dates", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "<>", "\"\< - \>\"", "<>", 
+         RowBox[{"dates", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}]}]}], ",", 
        RowBox[{"PlotStyle", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{
-          RowBox[{"PointSize", "[", "Large", "]"}], ",", "Blue"}], "}"}]}], 
-       ",", 
-       RowBox[{"PlotLegends", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-         "\"\<Downward trend distribution\>\"", ",", " ", 
-          "\"\<Geometric fit\>\""}], "}"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"PointSize", "[", "Large", "]"}], ",", "Black"}], "}"}], 
+          ",", "Blue"}], "}"}]}], ",", 
        RowBox[{"Epilog", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"Inset", "[", 
@@ -1076,8 +1002,8 @@ Cell[BoxData[{
                RowBox[{
                 RowBox[{"\"\<\!\(\*OverscriptBox[\(p\), \(^\)]\) = \>\"", "<>", 
                  RowBox[{"ToString", "[", 
-                  RowBox[{"p", " ", "/.", " ", "fit"}], "]"}]}], ",", "14"}], 
-               "]"}], "]"}], ",", 
+                  RowBox[{"1", "-", "p"}], "]"}]}], ",", "14"}], "]"}], "]"}],
+              ",", 
              RowBox[{"RoundingRadius", "\[Rule]", "1"}], ",", 
              RowBox[{"Background", "\[Rule]", 
               RowBox[{"RGBColor", "[", 
@@ -1094,135 +1020,17 @@ Cell[BoxData[{
       "plotsdir", "<>", "\"\<dist_neg_olddates_\>\"", "<>", "marketname", 
        "<>", "\"\<.png\>\""}], ",", "plot"}], "]"}], ";", 
     "\[IndentingNewLine]", 
-    RowBox[{"Print", "[", "plot", "]"}], ";", "\[IndentingNewLine]", 
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"Recent", " ", "dates"}], " ", "*)"}], "\[IndentingNewLine]", 
-    RowBox[{"l", " ", "=", " ", 
-     RowBox[{"HistogramList", "[", 
-      RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{
-          RowBox[{"-", "window"}], ";;", 
-          RowBox[{"-", "1"}]}], "]"}], "]"}], ",", "Automatic", ",", 
-       "\"\<Probability\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"pts", " ", "=", " ", 
-     RowBox[{"Transpose", "[", 
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"l", "[", 
-          RowBox[{"[", "1", "]"}], "]"}], "[", 
-         RowBox[{"[", 
-          RowBox[{"2", ";;", 
-           RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
-        RowBox[{"l", "[", 
-         RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"fit", " ", "=", " ", 
-     RowBox[{"FindDistributionParameters", "[", 
-      RowBox[{
-       RowBox[{"tddata", "[", 
-        RowBox[{"[", 
-         RowBox[{
-          RowBox[{"-", "window"}], ";;", 
-          RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
-       RowBox[{"GeometricDistribution", "[", "p", "]"}]}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"fittedPts", " ", "=", " ", 
-     RowBox[{"Table", "[", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"k", ",", 
-         RowBox[{"PDF", "[", 
-          RowBox[{
-           RowBox[{"GeometricDistribution", "[", 
-            RowBox[{"p", " ", "/.", " ", "fit"}], "]"}], ",", "k"}], "]"}]}], 
-        "}"}], ",", 
-       RowBox[{"{", 
-        RowBox[{"k", ",", "0", ",", 
-         RowBox[{"Max", "[", 
-          RowBox[{"pts", "[", 
-           RowBox[{"[", 
-            RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], 
-      "]"}]}], ";", "\[IndentingNewLine]", 
-    RowBox[{"plot", " ", "=", " ", 
-     RowBox[{"ListLogPlot", "[", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"pts", ",", "fittedPts"}], "}"}], ",", 
-       RowBox[{"Joined", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"False", ",", "True"}], "}"}]}], ",", 
-       RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", 
-       RowBox[{"FrameLabel", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"\"\<Duration (Days)\>\"", ",", " ", "\"\<Probability\>\""}],
-          "}"}]}], ",", 
-       RowBox[{"BaseStyle", "\[Rule]", 
-        RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
-       RowBox[{"PlotLabel", "\[Rule]", 
-        RowBox[{"marketname", "<>", "\"\< \>\"", " ", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", 
-             RowBox[{"-", "window"}], "]"}], "]"}], ",", "\"\<ISODate\>\""}], 
-          "]"}], "<>", "\"\< - \>\"", "<>", 
-         RowBox[{"DateString", "[", 
-          RowBox[{
-           RowBox[{"tddates", "[", 
-            RowBox[{"[", 
-             RowBox[{"-", "1"}], "]"}], "]"}], ",", "\"\<ISODate\>\""}], 
-          "]"}]}]}], ",", 
-       RowBox[{"PlotStyle", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"PointSize", "[", "Large", "]"}], ",", "Blue"}], "}"}]}], 
-       ",", 
-       RowBox[{"PlotLegends", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-         "\"\<Downward trend distribution\>\"", ",", " ", 
-          "\"\<Geometric fit\>\""}], "}"}]}], ",", 
-       RowBox[{"Epilog", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"Inset", "[", 
-          RowBox[{
-           RowBox[{"Framed", "[", 
-            RowBox[{
-             RowBox[{"Text", "[", 
-              RowBox[{"Style", "[", 
-               RowBox[{
-                RowBox[{"\"\<\!\(\*OverscriptBox[\(p\), \(^\)]\) = \>\"", "<>", 
-                 RowBox[{"ToString", "[", 
-                  RowBox[{"p", " ", "/.", " ", "fit"}], "]"}]}], ",", "14"}], 
-               "]"}], "]"}], ",", 
-             RowBox[{"RoundingRadius", "\[Rule]", "1"}], ",", 
-             RowBox[{"Background", "\[Rule]", 
-              RowBox[{"RGBColor", "[", 
-               RowBox[{"1", ",", "1", ",", "1", ",", ".8"}], "]"}]}]}], "]"}],
-            ",", 
-           RowBox[{"Scaled", "[", 
-            RowBox[{"{", 
-             RowBox[{"0.8", ",", ".8"}], "}"}], "]"}]}], "]"}], "}"}]}], ",", 
-       RowBox[{"ImageSize", "\[Rule]", "500"}]}], "]"}]}], ";", 
-    "\[IndentingNewLine]", 
-    RowBox[{"Export", "[", 
-     RowBox[{
-      RowBox[{
-      "plotsdir", "<>", "\"\<dist_neg_recentdates_\>\"", "<>", "marketname", 
-       "<>", "\"\<.png\>\""}], ",", "plot"}], "]"}], ";", 
-    "\[IndentingNewLine]", 
     RowBox[{"Print", "[", "plot", "]"}], ";"}], "\[IndentingNewLine]", 
    "\[IndentingNewLine]", ",", 
    RowBox[{"{", 
     RowBox[{"f", ",", "files"}], "}"}]}], "\[IndentingNewLine]", 
   "]"}]}], "Input",
  CellChangeTimes->{{3.703373781413278*^9, 3.703373835744974*^9}, {
-  3.703374108754353*^9, 
-  3.7033741261040497`*^9}},ExpressionUUID->"9e8173e6-c762-4b55-a1c5-\
+   3.703374108754353*^9, 3.7033741261040497`*^9}, {3.7047487064555817`*^9, 
+   3.7047487219568157`*^9}, 3.704752056612915*^9, {3.704752206197381*^9, 
+   3.704752212470777*^9}, {3.704752296348901*^9, 3.704752314132524*^9}, {
+   3.7047524189186487`*^9, 3.7047524220737867`*^9}, {3.704753765172904*^9, 
+   3.7047538814961987`*^9}},ExpressionUUID->"9e8173e6-c762-4b55-a1c5-\
 bc7f577a4cc5"]
 }, Open  ]],
 
@@ -1235,91 +1043,6 @@ Cell["Equivalentes a la Fig. 2.", "Text",
  CellChangeTimes->{{3.6860007198502235`*^9, 3.686000725797335*^9}}],
 
 Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"TrendReturns", "[", "timeseries_", "]"}], " ", ":=", " ", 
-    RowBox[{"Module", "[", 
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{
-       "prices", ",", " ", "dates", ",", " ", "f", ",", " ", "sign", ",", " ",
-         "first", ",", " ", "returns"}], "}"}], ",", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"dates", " ", "=", " ", 
-        RowBox[{"timeseries", "[", 
-         RowBox[{"[", 
-          RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"prices", " ", "=", " ", 
-        RowBox[{"timeseries", "[", 
-         RowBox[{"[", 
-          RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
-       "\[IndentingNewLine]", "\[IndentingNewLine]", 
-       RowBox[{"f", " ", "=", " ", 
-        RowBox[{"Interpolation", "[", 
-         RowBox[{"prices", ",", 
-          RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"sign", " ", "=", " ", 
-        RowBox[{"Sign", "[", 
-         RowBox[{
-          RowBox[{"f", "'"}], "[", "1", "]"}], "]"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"first", " ", "=", " ", 
-        RowBox[{"prices", "[", 
-         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"returns", " ", "=", " ", 
-        RowBox[{
-         RowBox[{"Reap", "[", "\[IndentingNewLine]", 
-          RowBox[{"Do", "[", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"If", "[", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"sign", " ", "\[NotEqual]", " ", 
-                 RowBox[{"Sign", "[", 
-                  RowBox[{
-                   RowBox[{"f", "'"}], "[", 
-                   RowBox[{"i", "+", "1"}], "]"}], "]"}]}], " ", "||", " ", 
-                RowBox[{"i", " ", "\[Equal]", " ", 
-                 RowBox[{
-                  RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}]}], 
-               ",", "\[IndentingNewLine]", 
-               RowBox[{
-                RowBox[{"Sow", "[", " ", 
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"dates", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], ",", 
-                   RowBox[{
-                    RowBox[{"Log", "[", 
-                    RowBox[{"prices", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], "]"}], "-", 
-                    RowBox[{"Log", "[", "first", "]"}]}]}], "}"}], "]"}], ";",
-                 "\[IndentingNewLine]", 
-                RowBox[{"first", " ", "=", " ", 
-                 RowBox[{"prices", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}]}], ";", 
-                "\[IndentingNewLine]", 
-                RowBox[{"sign", "  ", "=", " ", 
-                 RowBox[{"Sign", "[", 
-                  RowBox[{
-                   RowBox[{"f", "'"}], "[", 
-                   RowBox[{"i", "+", "1"}], "]"}], "]"}]}], ";"}]}], 
-              "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
-            RowBox[{"{", 
-             RowBox[{"i", ",", "1", ",", 
-              RowBox[{
-               RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}], 
-             "}"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
-          "]"}], "[", 
-         RowBox[{"[", 
-          RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"Return", "[", "returns", "]"}], ";"}]}], 
-     "\[IndentingNewLine]", "]"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -1337,27 +1060,18 @@ Cell[BoxData[{
        RowBox[{"sr", " ", "=", 
         RowBox[{"Table", "[", 
          RowBox[{
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"part", "[", 
-             RowBox[{"[", 
-              RowBox[{"i", ",", 
-               RowBox[{"-", "1"}], ",", "1"}], "]"}], "]"}], ",", 
-            FractionBox[
-             RowBox[{"Total", "[", 
-              RowBox[{"Select", "[", 
-               RowBox[{
-                RowBox[{"part", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"i", ",", "All", ",", "2"}], "]"}], "]"}], ",", 
-                RowBox[{
-                 RowBox[{"#", ">", "0"}], "&"}]}], "]"}], "]"}], 
-             RowBox[{"Total", "[", 
-              RowBox[{"Abs", "[", 
-               RowBox[{"part", "[", 
-                RowBox[{"[", 
-                 RowBox[{"i", ",", "All", ",", "2"}], "]"}], "]"}], "]"}], 
-              "]"}]]}], "}"}], ",", 
+          FractionBox[
+           RowBox[{"Total", "[", 
+            RowBox[{"Select", "[", 
+             RowBox[{
+              RowBox[{"part", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"#", ">", "0"}], "&"}]}], "]"}], "]"}], 
+           RowBox[{"Total", "[", 
+            RowBox[{"Abs", "[", 
+             RowBox[{"part", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}]], ",", 
           RowBox[{"{", 
            RowBox[{"i", ",", "1", ",", 
             RowBox[{"Length", "[", "part", "]"}]}], "}"}]}], "]"}]}], ";", 
@@ -1372,8 +1086,8 @@ Cell[BoxData[{
    RowBox[{"files", " ", "=", " ", 
     RowBox[{"{", 
      RowBox[{
-     "\"\<S&P 500.csv\>\"", ",", " ", "\"\<IPC.csv\>\"", ",", " ", 
-      "\"\<NASDAQ Composite.csv\>\""}], "}"}]}], ";"}], 
+     "\"\<DJIA.dat\>\"", ",", " ", "\"\<IPC.dat\>\"", ",", " ", 
+      "\"\<NASDAQ Composite.dat\>\""}], "}"}]}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"window", " ", "=", " ", "1000"}], ";"}], "\[IndentingNewLine]", 
@@ -1386,8 +1100,9 @@ Cell[BoxData[{
        RowBox[{"marketname", " ", "=", " ", 
         RowBox[{"FileBaseName", "[", "f", "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"data", " ", "=", 
-        RowBox[{"ImportFinancialData", "[", 
-         RowBox[{"samplesdir", "<>", "f"}], "]"}]}], ";", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"Import", "[", 
+          RowBox[{"historicDataDir3", "<>", "f"}], "]"}], "]"}]}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"trendreturns", " ", "=", " ", 
         RowBox[{"TrendReturns", "[", "data", "]"}]}], ";", 
@@ -1399,18 +1114,36 @@ Cell[BoxData[{
        RowBox[{"f", ",", "files"}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"plot", " ", "=", " ", 
+  RowBox[{"plot", " ", "=", "  ", 
    RowBox[{"DateListPlot", "[", 
     RowBox[{"ratios", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1978", ",", "10", ",", "30"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2017", ",", "05", ",", "25"}], "}"}]}], "}"}], ",", 
      RowBox[{"PlotLegends", "\[Rule]", 
       RowBox[{"FileBaseName", " ", "/@", " ", "files"}]}], ",", " ", 
      RowBox[{"PlotTheme", "\[Rule]", "\"\<Scientific\>\""}], ",", " ", 
      RowBox[{"FrameLabel", "\[Rule]", 
       RowBox[{"{", 
-       RowBox[{"\"\<Date\>\"", ",", " ", "\"\<Ratio\>\""}], "}"}]}], ",", " ", 
+       RowBox[{"\"\<Time (Years)\>\"", ",", " ", "\"\<Ratio\>\""}], "}"}]}], 
+     ",", " ", 
      RowBox[{"BaseStyle", "\[Rule]", 
       RowBox[{"FontSize", "\[Rule]", "14"}]}], ",", 
-     RowBox[{"ImageSize", "\[Rule]", "500"}]}], "]"}]}], 
+     RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+     RowBox[{"GridLines", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"{", "0.5", "}"}]}], "}"}]}], ",", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", "\"\<Ratio Upward/Total Price Changes\>\""}], 
+     ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Black", ",", " ", "Red", ",", "Green"}], "}"}]}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Export", "[", 
@@ -1419,14 +1152,16 @@ Cell[BoxData[{
    "]"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"Print", "[", "plot", "]"}], ";"}]}], "Input",
- CellChangeTimes->{{3.703375412888665*^9, 
-  3.7033754444625807`*^9}},ExpressionUUID->"4cc15487-8b4f-4ddf-9bbb-\
+ CellChangeTimes->{{3.703375412888665*^9, 3.7033754444625807`*^9}, 
+   3.704747581589156*^9, {3.704748146566751*^9, 3.7047481467118607`*^9}, 
+   3.7047485607549334`*^9, {3.704753463314921*^9, 
+   3.704753464097702*^9}},ExpressionUUID->"4cc15487-8b4f-4ddf-9bbb-\
 7c1ba40f8530"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1431, 866},
-WindowMargins->{{Automatic, 169}, {Automatic, 4}},
+WindowSize->{1431, 770},
+WindowMargins->{{207, Automatic}, {121, Automatic}},
 PrintingCopies->1,
 PrintingPageRange->{32000, 32000},
 PrintingOptions->{"Magnification"->1.,
@@ -1452,33 +1187,45 @@ Cell[580, 22, 248, 4, 93, "Title", "ExpressionUUID" -> \
 Cell[CellGroupData[{
 Cell[853, 30, 225, 4, 66, "Chapter", "ExpressionUUID" -> \
 "6387856d-86d7-4526-8e8f-00dcc96e664d"],
-Cell[1081, 36, 14356, 342, 1909, "Input", "ExpressionUUID" -> \
-"2e63861a-6f76-4058-96ba-86fa1a530e1b"]
+Cell[1081, 36, 13981, 336, 1914, "Input", "ExpressionUUID" -> \
+"2e63861a-6f76-4058-96ba-86fa1a530e1b",
+ InitializationCell->True]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15474, 383, 176, 3, 66, "Chapter", "ExpressionUUID" -> \
+Cell[15099, 377, 176, 3, 66, "Chapter", "ExpressionUUID" -> \
 "ca009c4c-3dc6-4557-b866-7161c92a3e8c"],
-Cell[15653, 388, 171, 3, 31, "Text", "ExpressionUUID" -> \
+Cell[15278, 382, 171, 3, 31, "Text", "ExpressionUUID" -> \
 "5a2842c5-749d-4737-9d84-e09c52276ae0"],
-Cell[15827, 393, 3441, 80, 439, "Input", "ExpressionUUID" -> \
+Cell[CellGroupData[{
+Cell[15474, 389, 172, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"0a71ad44-48d0-4333-b957-5b80b4ddc30d"],
+Cell[15649, 394, 4492, 102, 627, "Input", "ExpressionUUID" -> \
 "f064f29f-e205-49e3-b8fc-b20e77040a3d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19305, 478, 97, 1, 66, "Chapter", "ExpressionUUID" -> \
+Cell[20178, 501, 174, 3, 64, "Subchapter", "ExpressionUUID" -> \
+"2bfa0524-c4ee-41e9-a44a-5b3ade595ca9"],
+Cell[20355, 506, 3728, 92, 604, "Input", "ExpressionUUID" -> \
+"e9bd7e44-f069-4135-97a6-c44bb49f4e9c"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24132, 604, 97, 1, 66, "Chapter", "ExpressionUUID" -> \
 "2f212519-b07f-4bdf-a247-dc166d9f72f5"],
-Cell[19405, 481, 111, 1, 31, "Text", "ExpressionUUID" -> \
+Cell[24232, 607, 111, 1, 31, "Text", "ExpressionUUID" -> \
 "af78210b-cd76-4527-bc8e-24227d72616a"],
-Cell[19519, 484, 8979, 198, 1170, "Input", "ExpressionUUID" -> \
-"c08f9606-8d87-4f36-9123-a877633c7efd"],
-Cell[28501, 684, 21170, 541, 1860, "Input", "ExpressionUUID" -> \
+Cell[24346, 610, 8600, 187, 1232, "Input", "ExpressionUUID" -> \
+"c08f9606-8d87-4f36-9123-a877633c7efd",
+ InitializationCell->True],
+Cell[32949, 799, 9521, 234, 1042, "Input", "ExpressionUUID" -> \
 "9e8173e6-c762-4b55-a1c5-bc7f577a4cc5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[49708, 1230, 98, 1, 66, "Chapter", "ExpressionUUID" -> \
+Cell[42507, 1038, 98, 1, 66, "Chapter", "ExpressionUUID" -> \
 "c3d479e7-4227-4ebe-88a3-a1385418600a"],
-Cell[49809, 1233, 109, 1, 31, "Text", "ExpressionUUID" -> \
+Cell[42608, 1041, 109, 1, 31, "Text", "ExpressionUUID" -> \
 "ae79ad9f-8c71-4e00-9a52-6a8180fbf096"],
-Cell[49921, 1236, 7544, 187, 1053, "Input", "ExpressionUUID" -> \
+Cell[42720, 1044, 4415, 114, 624, "Input", "ExpressionUUID" -> \
 "4cc15487-8b4f-4ddf-9bbb-7c1ba40f8530"]
 }, Open  ]]
 }, Open  ]]
