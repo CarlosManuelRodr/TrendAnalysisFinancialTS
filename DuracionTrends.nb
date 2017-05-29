@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     49464,       1227]
-NotebookOptionsPosition[     47163,       1162]
-NotebookOutlinePosition[     47669,       1182]
-CellTagsIndexPosition[     47626,       1179]
+NotebookDataLength[     51463,       1282]
+NotebookOptionsPosition[     48922,       1211]
+NotebookOutlinePosition[     49426,       1231]
+CellTagsIndexPosition[     49383,       1228]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1000,7 +1000,7 @@ Cell[BoxData[{
              RowBox[{"Text", "[", 
               RowBox[{"Style", "[", 
                RowBox[{
-                RowBox[{"\"\<\!\(\*OverscriptBox[\(p\), \(^\)]\) = \>\"", "<>", 
+                RowBox[{"\"\<\!\(\*OverscriptBox[\(q\), \(^\)]\) = \>\"", "<>", 
                  RowBox[{"ToString", "[", 
                   RowBox[{"1", "-", "p"}], "]"}]}], ",", "14"}], "]"}], "]"}],
               ",", 
@@ -1030,7 +1030,8 @@ Cell[BoxData[{
    3.7047487219568157`*^9}, 3.704752056612915*^9, {3.704752206197381*^9, 
    3.704752212470777*^9}, {3.704752296348901*^9, 3.704752314132524*^9}, {
    3.7047524189186487`*^9, 3.7047524220737867`*^9}, {3.704753765172904*^9, 
-   3.7047538814961987`*^9}},ExpressionUUID->"9e8173e6-c762-4b55-a1c5-\
+   3.7047538814961987`*^9}, {3.7050113064576607`*^9, 
+   3.7050113068965883`*^9}},ExpressionUUID->"9e8173e6-c762-4b55-a1c5-\
 bc7f577a4cc5"]
 }, Open  ]],
 
@@ -1157,11 +1158,59 @@ Cell[BoxData[{
    3.7047485607549334`*^9, {3.704753463314921*^9, 
    3.704753464097702*^9}},ExpressionUUID->"4cc15487-8b4f-4ddf-9bbb-\
 7c1ba40f8530"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Samples size", "Chapter",
+ CellChangeTimes->{{3.7050135339072733`*^9, 
+  3.705013535243237*^9}},ExpressionUUID->"198dc4fb-c4b3-4afe-88bb-\
+5f1a34286fb7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "historicDataDir1", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"files", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<DJIA.csv\>\"", ",", " ", "\"\<IPC.csv\>\"", ",", " ", 
+      "\"\<NASDAQ Composite.csv\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"marketname", " ", "=", 
+     RowBox[{"FileBaseName", "[", "f", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{"historicDataDir1", "<>", "f"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"marketname", "<>", "\"\< sample size: \>\"", "<>", 
+      RowBox[{"ToString", "[", 
+       RowBox[{"Length", "[", "data", "]"}], "]"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{"marketname", "<>", "\"\< partition sample size: \>\"", "<>", 
+      RowBox[{"ToString", "[", 
+       RowBox[{"Length", "[", 
+        RowBox[{"Partition", "[", 
+         RowBox[{"data", ",", "500", ",", "1"}], "]"}], "]"}], "]"}]}], "]"}],
+     ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"f", ",", "files"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.70501374810666*^9, 
+  3.705013772730177*^9}},ExpressionUUID->"54a1b7d1-b1cd-4d1c-837b-\
+c8ecca5f151a"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1431, 770},
-WindowMargins->{{207, Automatic}, {121, Automatic}},
+WindowMargins->{{Automatic, 68}, {Automatic, 85}},
 PrintingCopies->1,
 PrintingPageRange->{32000, 32000},
 PrintingOptions->{"Magnification"->1.,
@@ -1217,16 +1266,22 @@ Cell[24232, 607, 111, 1, 31, "Text", "ExpressionUUID" -> \
 Cell[24346, 610, 8600, 187, 1232, "Input", "ExpressionUUID" -> \
 "c08f9606-8d87-4f36-9123-a877633c7efd",
  InitializationCell->True],
-Cell[32949, 799, 9521, 234, 1042, "Input", "ExpressionUUID" -> \
+Cell[32949, 799, 9575, 235, 1042, "Input", "ExpressionUUID" -> \
 "9e8173e6-c762-4b55-a1c5-bc7f577a4cc5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[42507, 1038, 98, 1, 66, "Chapter", "ExpressionUUID" -> \
+Cell[42561, 1039, 98, 1, 66, "Chapter", "ExpressionUUID" -> \
 "c3d479e7-4227-4ebe-88a3-a1385418600a"],
-Cell[42608, 1041, 109, 1, 31, "Text", "ExpressionUUID" -> \
+Cell[42662, 1042, 109, 1, 31, "Text", "ExpressionUUID" -> \
 "ae79ad9f-8c71-4e00-9a52-6a8180fbf096"],
-Cell[42720, 1044, 4415, 114, 624, "Input", "ExpressionUUID" -> \
+Cell[42774, 1045, 4415, 114, 624, "Input", "ExpressionUUID" -> \
 "4cc15487-8b4f-4ddf-9bbb-7c1ba40f8530"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47226, 1164, 159, 3, 66, "Chapter", "ExpressionUUID" -> \
+"198dc4fb-c4b3-4afe-88bb-5f1a34286fb7"],
+Cell[47388, 1169, 1506, 38, 271, "Input", "ExpressionUUID" -> \
+"54a1b7d1-b1cd-4d1c-837b-c8ecca5f151a"]
 }, Open  ]]
 }, Open  ]]
 }

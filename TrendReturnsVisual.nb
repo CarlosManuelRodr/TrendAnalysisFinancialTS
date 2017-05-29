@@ -1,0 +1,227 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7691,        219]
+NotebookOptionsPosition[      7058,        197]
+NotebookOutlinePosition[      7394,        212]
+CellTagsIndexPosition[      7351,        209]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Visual representation of trend returns", "Title",
+ CellChangeTimes->{{3.7050124106369343`*^9, 
+  3.7050124161888447`*^9}},ExpressionUUID->"827ac06c-3bb6-4124-a830-\
+030d8c532de0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"TrendLines", "[", "timeseries_", "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "prices", ",", " ", "dates", ",", " ", "f", ",", " ", "sign", ",", " ", 
+       "first", ",", "firstElement", ",", " ", "returns"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"prices", " ", "=", " ", "timeseries"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"Interpolation", "[", 
+        RowBox[{"prices", ",", 
+         RowBox[{"InterpolationOrder", "\[Rule]", "1"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"sign", " ", "=", " ", 
+       RowBox[{"Sign", "[", 
+        RowBox[{
+         RowBox[{"f", "'"}], "[", "1", "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"first", " ", "=", " ", 
+       RowBox[{"prices", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"firstElement", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "first"}], "}"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"returns", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"Reap", "[", "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"sign", " ", "\[NotEqual]", " ", 
+                RowBox[{"Sign", "[", 
+                 RowBox[{
+                  RowBox[{"f", "'"}], "[", 
+                  RowBox[{"i", "+", "1"}], "]"}], "]"}]}], " ", "||", " ", 
+               RowBox[{"i", " ", "\[Equal]", " ", 
+                RowBox[{
+                 RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}]}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Sow", "[", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"prices", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]}], "}"}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"first", " ", "=", " ", 
+                RowBox[{"prices", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"sign", "  ", "=", " ", 
+                RowBox[{"Sign", "[", 
+                 RowBox[{
+                  RowBox[{"f", "'"}], "[", 
+                  RowBox[{"i", "+", "1"}], "]"}], "]"}]}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+           
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{
+              RowBox[{"Length", "[", "timeseries", "]"}], "-", "1"}]}], 
+            "}"}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+         "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"Return", "[", 
+       RowBox[{"Join", "[", 
+        RowBox[{"firstElement", ",", "returns"}], "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.705011748484523*^9, 3.705011773532505*^9}, {
+  3.7050120005787287`*^9, 
+  3.705012043818152*^9}},ExpressionUUID->"72bdeb45-110d-4776-b4a0-\
+78dbf558f0cd"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"historicDataDir1", "<>", "\"\<DJIA.csv\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"prices", " ", "=", " ", 
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "2"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"priceWithIndex", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"prices", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "prices", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tl", " ", "=", " ", 
+   RowBox[{"TrendLines", "[", "prices", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.705011935249318*^9, 3.7050119654010143`*^9}, {
+  3.705012057120816*^9, 
+  3.705012083864256*^9}},ExpressionUUID->"c1258409-b535-410b-a6e2-\
+268777b5a320"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"limit", " ", "=", " ", "50"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d1", " ", "=", " ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"priceWithIndex", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "\[LessEqual]", " ", "50"}], "&"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"d2", " ", "=", " ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"tl", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "\[LessEqual]", " ", "50"}], "&"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"d1", ",", "d2"}], "}"}], ",", 
+   RowBox[{"Joined", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"False", ",", " ", "True"}], "}"}]}], ",", 
+   RowBox[{"PlotTheme", "->", "\"\<Scientific\>\""}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Black", ",", "Red"}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", 
+    RowBox[{"\"\<DJI \>\"", "<>", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ",", "1"}], "]"}], "]"}], "<>", "\"\< to \>\"", "<>", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"50", ",", "1"}], "]"}], "]"}]}]}], ",", 
+   RowBox[{"BaseStyle", "\[Rule]", 
+    RowBox[{"FontSize", "\[Rule]", "13"}]}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "500"}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Time (trading days)\>\"", ",", " ", "\"\<Price (USD)\>\""}],
+      "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.705011971993775*^9, 3.705011972168766*^9}, {
+  3.705012087464864*^9, 3.705012258127943*^9}, {3.705012320910577*^9, 
+  3.705012391271035*^9}},ExpressionUUID->"c3282a4a-6bac-4bbe-8646-\
+583a7b49ecb2"]
+}, Open  ]]
+},
+WindowSize->{1431, 770},
+WindowMargins->{{Automatic, 44}, {Automatic, 46}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 185, 3, 93, "Title", "ExpressionUUID" -> \
+"827ac06c-3bb6-4124-a830-030d8c532de0"],
+Cell[768, 27, 3398, 83, 463, "Input", "ExpressionUUID" -> \
+"72bdeb45-110d-4776-b4a0-78dbf558f0cd"],
+Cell[4169, 112, 1023, 30, 107, "Input", "ExpressionUUID" -> \
+"c1258409-b535-410b-a6e2-268777b5a320"],
+Cell[5195, 144, 1847, 50, 155, "Input", "ExpressionUUID" -> \
+"c3282a4a-6bac-4bbe-8646-583a7b49ecb2"]
+}, Open  ]]
+}
+]
+*)
+
