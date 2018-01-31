@@ -48,7 +48,6 @@ Temporary Items
 *.sdf
 *.psd
 *.log
-*.pdf
 *.aux
 *.synctex.gz
 Test.nb
